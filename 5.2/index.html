@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="es6-module-loader-dev.js"></script>
+    <script>
+        System.paths.babel = "browser.min.js";
+        System.transpiler = "babel";
+    </script>
+    <style>
+        .toolbar {
+            background-color: #c6c6c6;
+            height: 50px;
+            padding: 5px;
+        }
+
+        .toolbar-item {
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            background-color: blue;
+        }
+
+        .disabled {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="myToolbar" class="toolbar">
+        <span class="toolbar-item"></span>
+        <span class="toolbar-item"></span>
+        <span class="toolbar-item"></span>
+    </div>
+
+    <script type="module">
+        import {Toolbar} from "toolbar.js";
+
+        let tb = new Toolbar(document.getElementById("myToolbar"));
+
+        tb.addListener("itemadded", function(e) {
+            alert(e.type);
+        });
+
+        tb.items[0].addListener("enabledchanged", function(e) {
+            alert(e.value);
+        });
+
+        tb.add();
+
+        tb.items[0].enabled = false;
+    </script>
+</body>
+</html>

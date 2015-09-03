@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="person.js"></script>
+</head>
+<body>
+    <script>
+        var obj = {}; // new Object();
+        var john = new Person("John");
+        var jim = new Employee("Jim", "Manager");
+        jim.greet("Jane");
+        jim.__proto__;
+
+        jim.toString();
+        jim.__proto__.__proto__.__proto__ === Object.prototype;
+        //john.__proto__.__proto__ === Object.prototype;
+        
+        //obj.__proto__ == Object.prototype
+    </script>
+</body>
+</html>

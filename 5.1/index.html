@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="es6-module-loader-dev.js"></script>
+    <script>
+        System.paths.babel = "browser.min.js";
+        System.transpiler = "babel";
+    </script>
+    <script type="module">
+        import {EventTarget} from "eventtarget.js";
+
+        let listener1 = function(e) {
+            alert(e.type);
+        };
+
+        let listener2 = function(e) {
+            alert(e.target);
+        };
+
+        var evt = new EventTarget();
+        evt.addListener("load", listener1);
+        evt.addListener("load", listener2);
+
+        evt.fireEvent("load");
+
+        evt.removeListener("load", listener1);
+        evt.removeListener("load", listener2);
+
+        evt.fireEvent("load");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
